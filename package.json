@@ -1,0 +1,13 @@
+{
+  "name": "exowise-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Exowise institutional landing (EN/ES)",
+  "main": "server.js",
+  "scripts": {
+    "build": "echo \"static site, no build needed\"",
+    "start": "node server.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {}
+}

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exowise — Wisdom from the outside</title>
+<meta name="description" content="Exowise connects enterprise systems, maps company knowledge and turns it into momentum. Integration, AI accelerators and go-to-market for the US, Canada and Latin America.">
+<meta property="og:title" content="Exowise — Wisdom from the outside">
+<meta property="og:description" content="We turn company knowledge into momentum.">
+<meta property="og:url" content="https://exowise.ai">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6a26 26 0 1 0 26 26' fill='none' stroke='%23141414' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M32 6a26 26 0 0 1 26 26' fill='none' stroke='%23F0A04B' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23F0A04B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141414; --ink-2:#4a4a52; --ink-3:#7a7a85;
+  --paper:#f7f1ec; --card:#ffffffcc; --line:#e7dfd8;
+  --orange:#f0a04b; --violet:#e9d4f7; --blue:#8aa2f8;
+  --radius:20px; --max:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,system-ui,sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* glow background */
+.glow{position:absolute;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.glow span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.75}
+.g1{width:520px;height:360px;background:var(--violet);top:-120px;left:30%}
+.g2{width:520px;height:380px;background:#f6c48b;top:-40px;right:-160px}
+.g3{width:720px;height:360px;background:var(--blue);bottom:-220px;left:35%;opacity:.55!important}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:#f7f1ecb8;border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-color:var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:500;font-size:20px;letter-spacing:-.01em}
+.brand svg{width:30px;height:30px}
+.links{display:flex;gap:32px;font-size:14px;color:var(--ink-2)}
+.links a:hover{color:var(--ink)}
+.right{display:flex;align-items:center;gap:14px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:#fff8}
+.lang button{border:0;background:none;font:inherit;font-size:12px;font-weight:500;padding:5px 11px;border-radius:999px;cursor:pointer;color:var(--ink-3)}
+.lang button.on{background:var(--ink);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-weight:400;font-size:14px;padding:12px 22px;border-radius:999px;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px #14141426}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn.small{padding:9px 16px;font-size:13px}
+
+/* hero */
+.hero{position:relative;padding:120px 0 140px;min-height:82vh;display:flex;align-items:center}
+.hero .wrap{width:100%}
+.eyebrow{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
+h1{font-weight:300;font-size:clamp(42px,7vw,88px);line-height:1.04;letter-spacing:-.035em;max-width:14ch}
+.lead{font-size:clamp(18px,2.2vw,24px);color:var(--ink-2);margin-top:26px;max-width:36ch}
+.cta{display:flex;gap:12px;margin-top:40px;flex-wrap:wrap}
+
+section{padding:110px 0}
+h2{font-weight:300;font-size:clamp(32px,4.4vw,52px);line-height:1.1;letter-spacing:-.025em;max-width:20ch}
+.sub{color:var(--ink-2);font-size:18px;margin-top:18px;max-width:58ch}
+
+/* problem */
+.problem{background:var(--ink);color:#f3efe9;position:relative;overflow:hidden}
+.problem .eyebrow{color:#a9a39c}
+.problem .sub{color:#c9c3bb}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ffffff1f;margin-top:64px;border-radius:var(--radius);overflow:hidden}
+.stat{background:var(--ink);padding:36px 30px}
+.stat b{display:block;font-weight:500;font-size:18px;margin-bottom:8px;color:#fff}
+.stat p{color:#b9b3ab;font-size:15px}
+.stat i{display:block;width:28px;height:3px;border-radius:3px;background:var(--orange);margin-bottom:22px}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:38px;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px #1414140f}
+.icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:26px}
+.icon svg{width:22px;height:22px}
+.card h3{font-weight:500;font-size:21px;letter-spacing:-.01em;margin-bottom:10px}
+.card p{color:var(--ink-2);font-size:15.5px}
+
+/* approach */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:60px;counter-reset:s}
+.step{border-top:1px solid var(--ink);padding-top:22px}
+.step span{font-size:13px;font-weight:500;color:var(--orange)}
+.step h4{font-weight:500;font-size:19px;margin:6px 0 8px}
+.step p{color:var(--ink-2);font-size:15px}
+
+/* human in the loop */
+.hitl{position:relative;overflow:hidden}
+.hitl .inner{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.orb{aspect-ratio:1;max-width:420px;width:100%;margin:auto;position:relative}
+.orb svg{width:100%;height:100%}
+.spin{transform-origin:200px 200px;animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+
+/* markets */
+.markets{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.pill{border:1px solid var(--line);background:#fff9;border-radius:999px;padding:12px 22px;font-size:15px;font-weight:400}
+.pill em{font-style:normal;color:var(--orange);margin-right:8px}
+
+/* contact */
+.contact{position:relative;overflow:hidden;text-align:center;padding:140px 0}
+.contact h2{margin:0 auto}
+.contact .sub{margin:18px auto 0}
+.contact .cta{justify-content:center}
+.mails{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:40px;font-size:14px;color:var(--ink-2)}
+.mails a{border-bottom:1px solid var(--line)}
+.mails a:hover{color:var(--ink);border-color:var(--ink)}
+
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:13px;color:var(--ink-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .links{display:none}
+  .stats,.grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .hitl .inner{grid-template-columns:1fr}
+  section{padding:80px 0}
+  .hero{padding:80px 0 100px;min-height:auto}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .steps{grid-template-columns:1fr}
+  .card{padding:28px}
+  .right .btn{display:none}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <nav class="wrap">
+    <a href="#" class="brand" aria-label="Exowise">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6a26 26 0 1 0 26 26" fill="none" stroke="#141414" stroke-width="5" stroke-linecap="round"/><path d="M32 6a26 26 0 0 1 26 26" fill="none" stroke="#F0A04B" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="32" r="7" fill="#F0A04B"/></svg>
+      Exowise
+    </a>
+    <div class="links">
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#approach" data-i18n="nav.approach">Approach</a>
+      <a href="#why" data-i18n="nav.why">Why Exowise</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </div>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <button type="button" data-lang="es">ES</button>
+      </div>
+      <a href="#contact" class="btn small" data-i18n="nav.cta">Let's talk</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="glow"><span class="g1"></span><span class="g2"></span><span class="g3"></span></div>
+    <div class="wrap">
+      <p class="eyebrow reveal" data-i18n="hero.eyebrow">Enterprise integration · AI · Go-to-market</p>
+      <h1 class="reveal" data-i18n="hero.title">Wisdom from the outside.</h1>
+      <p class="lead reveal" data-i18n="hero.lead">We turn company knowledge into momentum.</p>
+      <div class="cta reveal">
+        <a href="#contact" class="btn" data-i18n="hero.cta1">Start a conversation →</a>
+        <a href="#services" class="btn ghost" data-i18n="hero.cta2">What we do</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="problem" id="why">
+    <div class="wrap">
+      <p class="eyebrow reveal" data-i18n="prob.eyebrow">The problem</p>
+      <h2 class="reveal" data-i18n="prob.title">Most companies run on systems that were never designed to talk to each other.</h2>
+      <p class="sub reveal" data-i18n="prob.sub">ERPs, CRMs, warehouses and legacy platforms pile up. Knowledge gets trapped between them — and growth slows down. We find the gaps and close them.</p>
+      <div class="stats">
+        <div class="stat reveal"><i></i><b data-i18n="prob.s1t">Disconnected systems</b><p data-i18n="prob.s1p">Data lives in silos, processes break at every hand-off.</p></div>
+        <div class="stat reveal"><i></i><b data-i18n="prob.s2t">Trapped knowledge</b><p data-i18n="prob.s2p">What the company knows sits in people, files and inboxes — not in its systems.</p></div>
+        <div class="stat reveal"><i></i><b data-i18n="prob.s3t">Stalled growth</b><p data-i18n="prob.s3p">Great products fail to reach their market without the right strategy.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="eyebrow reveal" data-i18n="svc.eyebrow">What we do</p>
+      <h2 class="reveal" data-i18n="svc.title">Four ways we move your company forward.</h2>
+      <div class="grid">
+        <article class="card reveal">
+          <div class="icon" style="background:#fbe3c8"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 6h4a4 4 0 0 1 4 4v5"/></svg></div>
+          <h3 data-i18n="svc.1t">Enterprise integration</h3>
+          <p data-i18n="svc.1p">We connect ERPs, CRMs, WMS and legacy platforms through a modern, maintainable integration layer.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon" style="background:#efe1fb"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3 data-i18n="svc.2t">AI accelerators</h3>
+          <p data-i18n="svc.2p">Applied AI and automation that put your company's knowledge to work — with people always in the loop.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon" style="background:#dfe5fd"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M8 21h8M7 9h6M7 13h10"/></svg></div>
+          <h3 data-i18n="svc.3t">Products & licensing</h3>
+          <p data-i18n="svc.3p">Subscription solutions that grow with your business, with a partner who stays with you after go-live.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon" style="background:#f5e6dc"><svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.6" stroke-linecap="round"><path d="M4 19l6-6 4 4 6-8"/><path d="M15 9h5v5"/></svg></div>
+          <h3 data-i18n="svc.4t">Go-to-market strategy</h3>
+          <p data-i18n="svc.4p">We help technology products reach — and win — their market in the United States, Canada and Latin America.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow reveal" data-i18n="app.eyebrow">How we work</p>
+      <h2 class="reveal" data-i18n="app.title">From what you know to where you're going.</h2>
+      <div class="steps">
+        <div class="step reveal"><span>01</span><h4 data-i18n="app.1t">Discover</h4><p data-i18n="app.1p">We learn how your company really works — systems, people and processes.</p></div>
+        <div class="step reveal"><span>02</span><h4 data-i18n="app.2t">Map</h4><p data-i18n="app.2p">We map the knowledge and the gaps between your platforms.</p></div>
+        <div class="step reveal"><span>03</span><h4 data-i18n="app.3t">Connect</h4><p data-i18n="app.3p">We integrate, automate and bring AI where it creates real value.</p></div>
+        <div class="step reveal"><span>04</span><h4 data-i18n="app.4t">Accelerate</h4><p data-i18n="app.4p">We keep improving with you, turning results into momentum.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hitl">
+    <div class="glow"><span class="g1" style="left:-10%;top:10%"></span><span class="g2" style="top:40%"></span></div>
+    <div class="wrap inner">
+      <div>
+        <p class="eyebrow reveal" data-i18n="hitl.eyebrow">Our philosophy</p>
+        <h2 class="reveal" data-i18n="hitl.title">The exo that embraces. The human in the loop.</h2>
+        <p class="sub reveal" data-i18n="hitl.sub">Like an exoskeleton, we wrap around your organization to extend what it can do — without replacing the people who make it unique. Technology amplifies; your team decides.</p>
+        <div class="markets reveal">
+          <span class="pill"><em>●</em><span data-i18n="mk.us">United States</span></span>
+          <span class="pill"><em>●</em><span data-i18n="mk.ca">Canada</span></span>
+          <span class="pill"><em>●</em><span data-i18n="mk.la">Latin America</span></span>
+        </div>
+      </div>
+      <div class="orb reveal" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs><radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#f6c48b" stop-opacity=".55"/><stop offset="1" stop-color="#f6c48b" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="200" cy="200" r="190" fill="url(#rg)"/>
+          <g class="spin">
+            <path d="M200 40a160 160 0 1 0 160 160" fill="none" stroke="#141414" stroke-width="14" stroke-linecap="round"/>
+            <path d="M200 40a160 160 0 0 1 160 160" fill="none" stroke="#F0A04B" stroke-width="14" stroke-linecap="round"/>
+          </g>
+          <circle cx="200" cy="200" r="100" fill="none" stroke="#8aa2f8" stroke-width="1.5" stroke-dasharray="3 7"/>
+          <circle cx="200" cy="200" r="38" fill="#F0A04B"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="glow"><span class="g1"></span><span class="g2" style="top:auto;bottom:-120px"></span><span class="g3" style="bottom:-260px"></span></div>
+    <div class="wrap">
+      <p class="eyebrow reveal" data-i18n="ct.eyebrow">Contact</p>
+      <h2 class="reveal" data-i18n="ct.title">Let's find the gaps — and turn them into growth.</h2>
+      <p class="sub reveal" data-i18n="ct.sub">Tell us about your systems and your goals. We'll get back to you within one business day.</p>
+      <div class="cta reveal">
+        <a href="mailto:info@exowise.ai?subject=Exowise%20-%20Contact" class="btn" data-i18n="ct.cta">Write to info@exowise.ai →</a>
+        <a href="https://www.linkedin.com/company/exowise" target="_blank" rel="noopener" class="btn ghost">LinkedIn</a>
+      </div>
+      <div class="mails reveal">
+        <a href="mailto:alejandro@exowise.ai">alejandro@exowise.ai</a>
+        <a href="mailto:sabrina@exowise.ai">sabrina@exowise.ai</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y">2026</span> Exowise. <span data-i18n="ft.rights">All rights reserved.</span></span>
+    <span data-i18n="ft.tag">Wisdom from the outside. Momentum on the inside.</span>
+  </div>
+</footer>
+
+<script>
+const ES = {
+  "nav.services":"Servicios","nav.approach":"Metodología","nav.why":"Por qué Exowise","nav.contact":"Contacto","nav.cta":"Hablemos",
+  "hero.eyebrow":"Integración empresarial · IA · Go-to-market",
+  "hero.title":"Sabiduría desde afuera.",
+  "hero.lead":"Convertimos el conocimiento de tu empresa en impulso.",
+  "hero.cta1":"Iniciar una conversación →","hero.cta2":"Qué hacemos",
+  "prob.eyebrow":"El problema",
+  "prob.title":"La mayoría de las empresas funciona con sistemas que nunca fueron pensados para hablar entre sí.",
+  "prob.sub":"ERPs, CRMs, depósitos y plataformas heredadas se acumulan. El conocimiento queda atrapado entre ellos y el crecimiento se frena. Nosotros encontramos esos vacíos y los cerramos.",
+  "prob.s1t":"Sistemas desconectados","prob.s1p":"Los datos viven en silos y los procesos se cortan en cada traspaso.",
+  "prob.s2t":"Conocimiento atrapado","prob.s2p":"Lo que la empresa sabe está en personas, archivos y bandejas de correo, no en sus sistemas.",
+  "prob.s3t":"Crecimiento estancado","prob.s3p":"Grandes productos no llegan a su mercado sin la estrategia correcta.",
+  "svc.eyebrow":"Qué hacemos","svc.title":"Cuatro formas de hacer avanzar tu empresa.",
+  "svc.1t":"Integración empresarial","svc.1p":"Conectamos ERPs, CRMs, WMS y plataformas heredadas con una capa de integración moderna y mantenible.",
+  "svc.2t":"Aceleradores de IA","svc.2p":"IA aplicada y automatización que ponen a trabajar el conocimiento de tu empresa, siempre con personas en el circuito.",
+  "svc.3t":"Productos y licencias","svc.3p":"Soluciones por suscripción que crecen con tu negocio, con un socio que sigue a tu lado después de la puesta en marcha.",
+  "svc.4t":"Estrategia go-to-market","svc.4p":"Ayudamos a productos tecnológicos a llegar a su mercado —y ganarlo— en Estados Unidos, Canadá y Latinoamérica.",
+  "app.eyebrow":"Cómo trabajamos","app.title":"De lo que sabés a donde vas.",
+  "app.1t":"Descubrir","app.1p":"Entendemos cómo funciona realmente tu empresa: sistemas, personas y procesos.",
+  "app.2t":"Mapear","app.2p":"Mapeamos el conocimiento y los vacíos entre tus plataformas.",
+  "app.3t":"Conectar","app.3p":"Integramos, automatizamos y sumamos IA donde genera valor real.",
+  "app.4t":"Acelerar","app.4p":"Seguimos mejorando con vos, transformando resultados en impulso.",
+  "hitl.eyebrow":"Nuestra filosofía","hitl.title":"El exo que abraza. El humano en el circuito.",
+  "hitl.sub":"Como un exoesqueleto, envolvemos a tu organización para ampliar lo que puede hacer, sin reemplazar a las personas que la hacen única. La tecnología potencia; tu equipo decide.",
+  "mk.us":"Estados Unidos","mk.ca":"Canadá","mk.la":"Latinoamérica",
+  "ct.eyebrow":"Contacto","ct.title":"Encontremos los vacíos y convirtámoslos en crecimiento.",
+  "ct.sub":"Contanos sobre tus sistemas y tus objetivos. Te respondemos en un día hábil.",
+  "ct.cta":"Escribinos a info@exowise.ai →",
+  "ft.rights":"Todos los derechos reservados.","ft.tag":"Sabiduría desde afuera. Impulso desde adentro."
+};
+const nodes=[...document.querySelectorAll('[data-i18n]')];
+const EN={}; nodes.forEach(n=>EN[n.dataset.i18n]=n.textContent);
+function setLang(l){
+  const d=l==='es'?ES:EN;
+  nodes.forEach(n=>{const v=d[n.dataset.i18n]; if(v) n.textContent=v;});
+  document.documentElement.lang=l;
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  document.title = l==='es' ? 'Exowise — Sabiduría desde afuera' : 'Exowise — Wisdom from the outside';
+  try{localStorage.setItem('exo-lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+let saved=null; try{saved=localStorage.getItem('exo-lang')}catch(e){}
+const q=new URLSearchParams(location.search).get('lang');
+if(q==='es'||q==='en') setLang(q); else if(saved) setLang(saved);
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const h=document.querySelector('header');
+addEventListener('scroll',()=>h.classList.toggle('scrolled',scrollY>8),{passive:true});
+document.getElementById('y').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
